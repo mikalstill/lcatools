@@ -37,6 +37,13 @@ for row in cursor:
 print('Found %d users' % len(users))
 print
 
+speakers = {}
+cursor.execute('select * from symposion_speakers_speaker;')
+for row in cursor:
+    speakers[row['id']] = row
+print('Found %d speakers' % len(speakers))
+print
+
 # Now re-munge all that
 for review_id in reviews:
     prop_id = reviews[review_id]['proposal_id']
@@ -76,7 +83,8 @@ with open('final_scores.csv', 'w') as csvfile:
 
     for prop_id in proposals:
         proposal = proposals[prop_id]
-        speaker = users[proposals[prop_id]['speaker_id']]
+        speaker = speakers[proposals[prop_id]['speaker_id']]
+        speaker.update(users[speaker['user_id']])
 
         scores = []
         buckets = {}
