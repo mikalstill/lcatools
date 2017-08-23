@@ -1,0 +1,8 @@
+Installation
+============
+
+ sudo apt-get install libprotobuf-dev libprotobuf9v5 protobuf-compiler
+ export MYSQLXPB_PROTOBUF_INCLUDE_DIR=/usr/include/google/protobuf
+ export MYSQLXPB_PROTOBUF_LIB_DIR=/usr/lib/x86_64-linux-gnu
+ export MYSQLXPB_PROTOC=/usr/bin/protoc
+ pip install mysql-connector
